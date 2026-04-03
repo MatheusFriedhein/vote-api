@@ -194,14 +194,6 @@ integration.user-info.enabled=true
 
 O projeto possui testes unitários para validar regras de voto e apuração.
 
-Para evolução, os próximos passos mais naturais seriam:
-
-- testes de integração com PostgreSQL usando Testcontainers
-- teste de carga com Gatling, k6 ou JMeter
-- dashboard de métricas de voto por sessão
-- autenticação JWT em vez de HTTP Basic
-
-
 ## Executar com Docker
 
 Com Docker e Docker Compose instalados, basta rodar:
