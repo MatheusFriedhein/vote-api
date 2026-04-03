@@ -19,20 +19,17 @@ public class AgendaService {
 
     @Transactional
     public AgendaResponse create(CreateAgendaRequest request) {
-        Agenda agenda = Agenda.builder()
+        return toResponse(agendaRepository.save(Agenda.builder()
                 .title(request.title())
                 .description(request.description())
                 .createdAt(OffsetDateTime.now())
-                .build();
-
-        Agenda saved = agendaRepository.save(agenda);
-        return toResponse(saved);
+                .build()));
     }
 
     @Transactional(readOnly = true)
     public Agenda findEntityById(Long agendaId) {
         return agendaRepository.findById(agendaId)
-                .orElseThrow(() -> new NotFoundException("Pauta não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Agenda não encontrada"));
     }
 
     private AgendaResponse toResponse(Agenda agenda) {

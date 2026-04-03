@@ -1,4 +1,4 @@
-# Assembly Voting API
+# Voting API
 
 Projeto em **Java 17 + Spring Boot** para gerenciamento de agendas, abertura de sessões, recebimento de votos e apuração final.
 
@@ -198,7 +198,7 @@ O projeto possui testes unitários para validar regras de voto e apuração.
 
 Com Docker e Docker Compose instalados, basta rodar:
 
-```bash
+```
 docker compose up --build
 ```
 
@@ -208,13 +208,13 @@ Isso sobe:
 
 Para derrubar os containers:
 
-```bash
+```
 docker compose down
 ```
 
 Para derrubar removendo também o volume do banco:
 
-```bash
+```
 docker compose down -v
 ```
 
@@ -224,3 +224,13 @@ Endpoints úteis após subir:
 - Health: `http://localhost:8080/actuator/health`
 
 A aplicação usa um `Dockerfile` multi-stage, compilando com Maven dentro do container e executando o JAR em uma imagem JRE menor.
+
+## Collection Postman
+
+No diretório:
+
+```
+../resources/data/
+```
+
+Existe as chamadas dos endpoints como exemplo e variáveis de ambiente para testes.

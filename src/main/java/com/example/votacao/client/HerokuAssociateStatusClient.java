@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientResponseException;
 
-
 @Slf4j
 @Component
 public class HerokuAssociateStatusClient implements AssociateStatusClient {
@@ -33,10 +32,7 @@ public class HerokuAssociateStatusClient implements AssociateStatusClient {
 
     @Override
     public boolean canVote(String cpf) {
-        if (!properties.enabled()) {
-            return true;
-        }
-
+        if (!properties.enabled()) return true;
         String sanitizedCpf = sanitizeCpf(cpf);
 
         try {

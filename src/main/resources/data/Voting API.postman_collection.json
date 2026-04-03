@@ -1,0 +1,260 @@
+{
+  "info": {
+    "_postman_id": "613169b5-2cc5-4fe7-8a04-7e1e93243a6d",
+    "name": "Voting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3033522"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/actuator/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "actuator",
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Criar agenda",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var json = pm.response.json();",
+              "if (json && json.id) {",
+              "    console.log(json) ",
+              "    pm.collectionVariables.set(\"agendaId\", json.id); ",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Version",
+            "value": "v1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Pauta de teste\", \"description\": \"Pauta criada via Postman\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agendas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "agendas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Abrir sessão",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Version",
+            "value": "v1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"durationInMinutes\": 1}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agendas/{{agendaId}}/sessoes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "agendas",
+            "{{agendaId}}",
+            "sessoes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar sessão",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-Version",
+            "value": "v1"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agendas/{{agendaId}}/sessoes",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "agendas",
+            "{{agendaId}}",
+            "sessoes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Votar SIM",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Version",
+            "value": "v1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"associate\": {\n        \"name\": \"USUARIO A\",\n        \"cpf\": \"52998224725\"\n    },\n    \"vote\": \"SIM\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agendas/{{agendaId}}/votos",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "agendas",
+            "{{agendaId}}",
+            "votos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Votar NAO",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-API-Version",
+            "value": "v1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"associate\": {\n        \"name\": \"USUARIO B\",\n        \"cpf\": \"11144477735\"\n    },\n    \"vote\": \"NAO\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agendas/{{agendaId}}/votos",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "agendas",
+            "{{agendaId}}",
+            "votos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consultar resultado",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-API-Version",
+            "value": "v1"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agendas/{{agendaId}}/resultado",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "agendas",
+            "{{agendaId}}",
+            "resultado"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{username}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{password}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "agendaId",
+      "value": ""
+    },
+    {
+      "key": "associateId",
+      "value": "1"
+    }
+  ]
+}

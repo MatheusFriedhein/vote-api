@@ -46,7 +46,7 @@ public class AgendaController {
 
     @PostMapping("/{agendaId}/votos")
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Registrar voto em uma pauta")
+    @Operation(summary = "Registrar voto em uma agenda")
     public VoteResponse vote(@PathVariable Long agendaId, @Valid @RequestBody VoteRequest request) {
         return voteService.registerVote(agendaId, request);
     }

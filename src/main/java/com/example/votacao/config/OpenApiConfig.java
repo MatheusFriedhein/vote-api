@@ -19,12 +19,12 @@ public class OpenApiConfig {
 
         return new OpenAPI()
                 .info(new Info()
-                        .title("Assembly Voting API")
+                        .title("Voting API")
                         .version("v1")
-                        .description("API para cadastro de pautas, abertura de sessões, votação e apuração. " +
+                        .description("API para cadastro de agendas (assembléias), abertura de sessões, votação e apuração. " +
                                 "A estratégia de versionamento principal é por URI (/api/v1) e, opcionalmente, " +
                                 "o cliente pode enviar o header X-API-Version=1 ou v1 para compatibilidade explícita.")
-                        .contact(new Contact().name("OpenAI - Exemplo técnico")))
+                        .contact(new Contact().name("Exemplo técnico")))
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(new Components()
                         .addParameters("ApiVersionHeader", new Parameter()

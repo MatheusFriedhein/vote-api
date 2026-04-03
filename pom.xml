@@ -13,7 +13,7 @@
     <artifactId>voting-api</artifactId>
     <version>1.0.0</version>
     <name>voting-api</name>
-    <description>API REST para gerenciamento de pautas e sessões de votação</description>
+    <description>API REST para gerenciamento de agendas e sessões de votação</description>
 
     <properties>
         <java.version>17</java.version>

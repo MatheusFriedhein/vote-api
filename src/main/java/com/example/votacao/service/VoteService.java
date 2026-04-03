@@ -45,7 +45,7 @@ public class VoteService {
         Associate associate = associateService.findOrCreate(request.associate());
 
         if (voteRepository.existsByAgendaIdAndAssociateId(agendaId, associate.getId())) {
-            throw new BusinessException("Associado já votou nesta pauta");
+            throw new BusinessException("Associado já votou nesta agenda");
         }
 
         if (!associateStatusClient.canVote(associate.getCpf())) {
@@ -63,7 +63,7 @@ public class VoteService {
             votingSessionRepository.incrementCounters(agendaId, request.vote().name());
             return new VoteResponse(saved.getId(), agenda.getId(), associate.getId(), saved.getValue(), saved.getCreatedAt());
         } catch (DataIntegrityViolationException ex) {
-            throw new BusinessException("Associado já votou nesta pauta");
+            throw new BusinessException("Associado já votou nesta agenda");
         }
     }
 

@@ -7,9 +7,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties(UserInfoProperties.class)
-public class AssemblyVotingApiApplication {
+public class VotingApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AssemblyVotingApiApplication.class, args);
+        SpringApplication.run(VotingApiApplication.class, args);
     }
 }

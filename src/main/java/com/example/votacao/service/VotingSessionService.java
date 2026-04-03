@@ -16,7 +16,7 @@ import java.time.OffsetDateTime;
 @RequiredArgsConstructor
 public class VotingSessionService {
 
-    private static final int DEFAULT_DURATION_MINUTES = 1;
+    private static final int DEFAULT_DURATION_MINUTES = 5;
 
     private final AgendaService agendaService;
     private final VotingSessionRepository votingSessionRepository;
@@ -24,7 +24,7 @@ public class VotingSessionService {
     @Transactional
     public SessionResponse open(Long agendaId, OpenSessionRequest request) {
         if (votingSessionRepository.existsByAgendaId(agendaId)) {
-            throw new BusinessException("Já existe uma sessão aberta/criada para esta pauta");
+            throw new BusinessException("Já existe uma sessão aberta/criada para esta agenda");
         }
 
         Agenda agenda = agendaService.findEntityById(agendaId);
