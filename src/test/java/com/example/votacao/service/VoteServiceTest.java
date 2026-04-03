@@ -1,6 +1,5 @@
 package com.example.votacao.service;
 
-import com.example.votacao.client.AssociateStatusClient;
 import com.example.votacao.dto.CreateAssociateRequest;
 import com.example.votacao.dto.VoteRequest;
 import com.example.votacao.exception.BusinessException;
@@ -9,7 +8,6 @@ import com.example.votacao.model.Associate;
 import com.example.votacao.model.VoteValue;
 import com.example.votacao.model.VotingSession;
 import com.example.votacao.repository.VoteRepository;
-import com.example.votacao.repository.VotingSessionRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,22 +26,18 @@ class VoteServiceTest {
     @Mock
     private VoteRepository voteRepository;
     @Mock
-    private VotingSessionRepository votingSessionRepository;
-    @Mock
     private AgendaService agendaService;
     @Mock
     private VotingSessionService votingSessionService;
     @Mock
     private AssociateService associateService;
-    @Mock
-    private AssociateStatusClient associateStatusClient;
 
     @InjectMocks
     private VoteService voteService;
 
     @Test
     void shouldNotAllowDuplicateVote() {
-        Agenda agenda = Agenda.builder().id(1L).title("Pauta 1").build();
+        Agenda agenda = Agenda.builder().id(1L).title("Agenda 1").build();
         VotingSession session = VotingSession.builder()
                 .id(1L)
                 .agenda(agenda)

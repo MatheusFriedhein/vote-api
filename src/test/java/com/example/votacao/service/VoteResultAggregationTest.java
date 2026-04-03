@@ -36,7 +36,7 @@ class VoteResultAggregationTest {
 
     @Test
     void shouldReturnResultUsingSessionCounters() {
-        Agenda agenda = Agenda.builder().id(1L).title("Pauta de teste").build();
+        Agenda agenda = Agenda.builder().id(1L).title("Agenda de teste").build();
         VotingSession session = VotingSession.builder()
                 .id(99L)
                 .agenda(agenda)
