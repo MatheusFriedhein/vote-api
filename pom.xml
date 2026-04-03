@@ -10,9 +10,9 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>assembly-voting-api</artifactId>
+    <artifactId>voting-api</artifactId>
     <version>1.0.0</version>
-    <name>assembly-voting-api</name>
+    <name>voting-api</name>
     <description>API REST para gerenciamento de pautas e sessões de votação</description>
 
     <properties>
